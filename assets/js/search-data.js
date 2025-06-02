@@ -23,12 +23,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/long_news_example.html";
-            },},{id: "news-having-my-personal-website-sparkles-smile",
+        },{id: "news-having-my-personal-website-sparkles-smile",
           title: 'Having my personal website! :sparkles: :smile:',
           description: "",
           section: "News",},{id: "projects-project-1",
