@@ -9,12 +9,8 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <style>
-      .center { text-align: center; }
-      .right  { text-align: right; }
-    </style>
-    <p class="center">University of Macau</p>
-    <p class="center">Taipa, Macau, China</p>
+    <p style="font-size: 16px">University of Macau, Taipa, Macau, China</p>
+
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
