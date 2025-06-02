@@ -9,10 +9,9 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p align="center">University of Macau</p>
-    <p align="center">Taipa, Macau, China</p>
+    <p>University of Macau, Taipa, Macau, China</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
+selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
 
 announcements:
@@ -26,5 +25,16 @@ Hi! I am a first-year Ph.D. student in the [Computer Vision Lab](https://aimeryk
 
 
 My current research focuses on **computer vision**, especially *enhancing the robustness of foundation models when adapting to downstream tasks with limited data*.
+
+
+Hi! I am a first-year Ph.D. student in the [Computer Vision Lab](https://aimerykong.github.io/group.html) at the [FST department](https://www.fst.um.edu.mo/) of [University of Macau](https://www.um.edu.mo/) (UM), supervised by [Prof. Shu Kong](https://aimerykong.github.io). I received my M.S. degree of Information and Communication Engineering at [University of Electronic Science and Technology of China](https://www.uestc.edu.cn/) (UESTC) in 2024. 
+
+Hi! I am a first-year Ph.D. student in the [Computer Vision Lab](https://aimerykong.github.io/group.html) at the [FST department](https://www.fst.um.edu.mo/) of [University of Macau](https://www.um.edu.mo/) (UM), supervised by [Prof. Shu Kong](https://aimerykong.github.io). I received my M.S. degree of Information and Communication Engineering at [University of Electronic Science and Technology of China](https://www.uestc.edu.cn/) (UESTC) in 2024. 
+
+Hi! I am a first-year Ph.D. student in the [Computer Vision Lab](https://aimerykong.github.io/group.html) at the [FST department](https://www.fst.um.edu.mo/) of [University of Macau](https://www.um.edu.mo/) (UM), supervised by [Prof. Shu Kong](https://aimerykong.github.io). I received my M.S. degree of Information and Communication Engineering at [University of Electronic Science and Technology of China](https://www.uestc.edu.cn/) (UESTC) in 2024. 
+
+Hi! I am a first-year Ph.D. student in the [Computer Vision Lab](https://aimerykong.github.io/group.html) at the [FST department](https://www.fst.um.edu.mo/) of [University of Macau](https://www.um.edu.mo/) (UM), supervised by [Prof. Shu Kong](https://aimerykong.github.io). I received my M.S. degree of Information and Communication Engineering at [University of Electronic Science and Technology of China](https://www.uestc.edu.cn/) (UESTC) in 2024. 
+
+Hi! I am a first-year Ph.D. student in the [Computer Vision Lab](https://aimerykong.github.io/group.html) at the [FST department](https://www.fst.um.edu.mo/) of [University of Macau](https://www.um.edu.mo/) (UM), supervised by [Prof. Shu Kong](https://aimerykong.github.io). I received my M.S. degree of Information and Communication Engineering at [University of Electronic Science and Technology of China](https://www.uestc.edu.cn/) (UESTC) in 2024. 
 
 
