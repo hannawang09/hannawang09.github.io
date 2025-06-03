@@ -9,7 +9,7 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p style="font-size: 16px">University of Macau, Taipa, Macau, China</p>
+    <p style="font-size: 10px">University of Macau, Taipa, Macau, China</p>
 
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
