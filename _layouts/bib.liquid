@@ -37,7 +37,7 @@
             sizes = "1000px"
             class="preview z-depth-1 rounded"
             zoomable=true
-            avoid_scaling=true
+            avoid_scaling=false
             alt=entry.preview
           %}
         {% endif %}
@@ -85,10 +85,10 @@
           {%- if forloop.last and author_array_limit == author_array_size %}and {% endif -%}
         {% endif %}
         {%- if author_is_self -%}
-          <strong><em>
+          <strong><u>
             {{- author.first }}
             {{ author_last_html -}}
-          </em></strong>
+          </u></strong>
         {%- else -%}
           {%- if coauthor_url -%}
             <a href="{{ coauthor_url }}">
