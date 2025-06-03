@@ -214,8 +214,8 @@ display_categories: ["external-services"] # these categories will be displayed o
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Hanxin]
-  first_name: [Wang]
+  last_name: [Wang]
+  first_name: [Hanxin]
 
   style: apa
   locale: en
