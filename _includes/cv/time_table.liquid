@@ -43,12 +43,10 @@
                 {% endif %}
                 {% if content.location %}
                   <tr>
-                    <td>
-                      <td style="vertical-align: top; text-align: center" class="institution">
-                        <i class="fa-solid fa-location-dot iconlocation"></i>
-                        {{ content.location }}
-                      </td>
+                    <td style="vertical-align: top; text-align: center" class="institution">
+                      <i class="fa-solid fa-building-columns iconlocation"></i>
                     </td>
+                    <td class="institution">{{ content.location }}</td>
                   </tr>
                 {% endif %}
                 {% if content.area %}
