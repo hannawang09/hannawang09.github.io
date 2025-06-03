@@ -9,25 +9,22 @@
       value: A Ph.D. student researching computer vision with extensive experience in foundation model adaptation and class incremental learning.
 
 - title: Education
-  type: education
+  type: time_table
   contents:
-    - studyType: PhD
+    - title: PhD
       institution: University of Macau
-      startDate: 2024.08
-      endDate: Present
+      year: 2024.08 - present
       location: Macau, China
       area: Computer Science
     - title: Master
       institution: University of Electronic Science and Technology of China
       location: Sichuan, China
-      startDate: 2021.09
-      endDate: 2024.06
+      year: 2021.09 - 2024.06
       area: Information and Communication Engineering
     - title: Bachelor
       institution: Fuzhou University
       location: Fujian, China
-      startDate: 2017.09 
-      endDate: 2021.06
+      year: 2017.09 - 2021.06
       area: the Internet of Things (Major) and Artificial Intelligence (Minor)
 
 # - title: Experience
