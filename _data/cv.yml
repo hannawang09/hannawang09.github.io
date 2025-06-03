@@ -8,7 +8,7 @@
     - name: Email
       value: hanna.wang@connect.um.edu.mo / hannawang09@gmail.com
     - name: Summary
-      value: 
+      value: A Ph.D. student researching computer vision with extensive experience in foundation model adaptation and class incremental learning.
 
 - title: Education
   type: time_table
@@ -65,14 +65,21 @@
 - title: Awards
   type: time_table
   contents:
-    - year: 1921
+    - year: 2024
       items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
+        - The 5th Place in the campus women's group of Sichuan University Light Volleyball Competition
+    - year: 2022
       items:
-        - Max Planck Medal
-
+        - The 3th Prize academic excellence scholarship of UESTC
+    - year: 2021
+      items:
+        - Outstanding Graduates of Fuzhou University
+    - year: 2019
+      items:
+        - Provincial 3rd Prize in National Undergraduate Electronic Design Competition
+    - year: 2017 - 2020
+      items:
+        - The 1st Prize comprehensive scholarship of Fuzhou University (three times)
 
 - title: Hobbies
   type: nested_list
