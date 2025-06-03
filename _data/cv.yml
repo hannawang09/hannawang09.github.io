@@ -5,8 +5,8 @@
       value: Hanxin Wang
     - name: Email
       links: 
-      - hanna.wang@connect.um.edu.mo
-      - hannawang09@gmail.com
+        - hanna.wang@connect.um.edu.mo
+        - hannawang09@gmail.com
     - name: Summary
       value: A Ph.D. student researching computer vision with extensive experience in foundation model adaptation and class incremental learning.
 
