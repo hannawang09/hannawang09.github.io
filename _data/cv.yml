@@ -4,7 +4,7 @@
     - name: Name
       value: Hanxin Wang
     - name: Email
-      link: 
+      links: 
       - hanna.wang@connect.um.edu.mo
       - hannawang09@gmail.com
     - name: Summary
@@ -17,17 +17,17 @@
       institution: University of Macau
       year: 2024 - present
       location: Macau, China
-      area: Computer Science
+      #area: Computer Science
     - title: Master
       institution: University of Electronic Science and Technology of China
       location: Sichuan, China
       year: 2021 - 2024
-      area: Information and Communication Engineering
+      #area: Information and Communication Engineering
     - title: Bachelor
       institution: Fuzhou University
       location: Fujian, China
       year: 2017 - 2021
-      area: the Internet of Things (Major) and Artificial Intelligence (Minor)
+      #area: the Internet of Things (Major) and Artificial Intelligence (Minor)
 
 # - title: Experience
 #   type: time_table

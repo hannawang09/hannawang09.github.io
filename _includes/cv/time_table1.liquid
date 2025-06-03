@@ -13,16 +13,6 @@
                     </span>
                   </td>
                 </tr>
-                {% if content.location %}
-                  <tr>
-                    <td>
-                      <p class="location">
-                        <i class="fa-solid fa-location-dot iconlocation"></i>
-                        {{ content.location }}
-                      </p>
-                    </td>
-                  </tr>
-                {% endif %}
               </tbody>
             </table>
           </div>
@@ -48,6 +38,21 @@
                       <i class="fa-regular fa-circle-dot icondepartment"></i>
                     </td>
                     <td class="department">{{ content.department }}</td>
+                  </tr>
+                {% endif %}
+                {% if content.location %}
+                  <tr>
+                    <td style="vertical-align: top; text-align: center" class="institution">
+                      <i class="fa-solid fa-location-columns iconlocation"></i>
+                    </td>
+                    <td class="institution">{{ content.location }}</td>
+                  </tr>
+                {% endif %}
+                {% if content.area %}
+                  <tr>
+                    <td style="vertical-align: top; text-align: center" class="institution">
+                    </td>
+                    <td class="institution"><em>{{ content.area }}</em></td>
                   </tr>
                 {% endif %}
               </tbody>
