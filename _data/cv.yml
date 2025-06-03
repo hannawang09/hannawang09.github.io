@@ -16,15 +16,15 @@
     - title: PhD
       institution: University of Macau, Macau, China
       year: 2024 - present
-      maindescription: Computer Science
+      description: Computer Science
     - title: Master
       institution: University of Electronic Science and Technology of China, Sichuan, China
       year: 2021 - 2024
-      maindescription: Information and Communication Engineering
+      description: Information and Communication Engineering
     - title: Bachelor
       institution: Fuzhou University, Fujian, China
       year: 2017 - 2021
-      maindescription: the Internet of Things (Major) and Artificial Intelligence (Minor)
+      description: the Internet of Things (Major) and Artificial Intelligence (Minor)
 
 # - title: Experience
 #   type: time_table
@@ -74,7 +74,7 @@
 - title: Hobbies
   type: nested_list
   contents:
-    items:
-      - Volleyball🏐
-      - Traveling
-      - Music🎶(Swifties)
+    - items:
+        - Volleyball🏐
+        - Traveling
+        - Music🎶(Swifties)
