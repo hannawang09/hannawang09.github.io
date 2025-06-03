@@ -14,17 +14,20 @@
   type: time_table
   contents:
     - title: PhD
-      institution: University of Macau, Macau, China
+      institution: University of Macau
       year: 2024 - present
-      description: Computer Science
+      location: Macau, China
+      area: Computer Science
     - title: Master
-      institution: University of Electronic Science and Technology of China, Sichuan, China
+      institution: University of Electronic Science and Technology of China
+      location: Sichuan, China
       year: 2021 - 2024
-      description: Information and Communication Engineering
+      area: Information and Communication Engineering
     - title: Bachelor
-      institution: Fuzhou University, Fujian, China
+      institution: Fuzhou University
+      location: Fujian, China
       year: 2017 - 2021
-      description: the Internet of Things (Major) and Artificial Intelligence (Minor)
+      area: the Internet of Things (Major) and Artificial Intelligence (Minor)
 
 # - title: Experience
 #   type: time_table

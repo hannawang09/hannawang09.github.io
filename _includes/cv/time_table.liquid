@@ -50,6 +50,13 @@
                     <td class="department">{{ content.department }}</td>
                   </tr>
                 {% endif %}
+                {% if content.area %}
+                  <tr>
+                    <td style="vertical-align: top; text-align: center" class="department">
+                    </td>
+                    <td class="department"><em>{{ content.area }}</em></td>
+                  </tr>
+                {% endif %}
               </tbody>
             </table>
           {% endif %}
