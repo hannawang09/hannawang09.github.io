@@ -6,7 +6,7 @@
     - name: Zodiac Sign
       value: Virgo♍
     - name: Email
-      value: hanna.wang@connect.um.edu.mo/hannawang09@gmail.com
+      value: hanna.wang@connect.um.edu.mo / hannawang09@gmail.com
     - name: Summary
       value: 
 
@@ -16,15 +16,15 @@
     - title: PhD
       institution: University of Macau, Macau, China
       year: 2024 - present
-      area: Computer Science
+      maindescription: Computer Science
     - title: Master
       institution: University of Electronic Science and Technology of China, Sichuan, China
       year: 2021 - 2024
-      area: Information and Communication Engineering
+      maindescription: Information and Communication Engineering
     - title: Bachelor
       institution: Fuzhou University, Fujian, China
       year: 2017 - 2021
-      area: the Internet of Things (Major) and Artificial Intelligence (Minor)
+      maindescription: the Internet of Things (Major) and Artificial Intelligence (Minor)
 
 # - title: Experience
 #   type: time_table
@@ -72,7 +72,7 @@
 
 
 - title: Hobbies
-  type: list
+  type: nested_list
   contents:
     items:
       - Volleyball🏐
