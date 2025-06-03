@@ -5,7 +5,17 @@
         <b>{{ content.name }}</b>
       </td>
       {% if content.value %}
-        <td class="p-1 pl-2 font-weight-light text">{{ content.value }}</td>
+        <td class="p-1 pl-2 font-weight-light text">
+        {% if content.name == "Email" or content.name == "email" %}
+          {% assign emails = content.value | split: "," %}
+          {% for email in emails %}
+            <a href="mailto:{{ email | strip }}">{{ email | strip }}</a>
+            {% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        {% else %}
+          {{ content.value }}
+        {% endif %}
+      </td>
       {% endif %}
       {% if content.links %}
         <td class="p-1 pl-2 font-weight-light text">

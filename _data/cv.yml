@@ -4,27 +4,30 @@
     - name: Name
       value: Hanxin Wang
     - name: Email
-      value: hanna.wang@connect.um.edu.mo / hannawang09@gmail.com
+      value: hanna.wang@connect.um.edu.mo, hannawang09@gmail.com
     - name: Summary
       value: A Ph.D. student researching computer vision with extensive experience in foundation model adaptation and class incremental learning.
 
 - title: Education
-  type: time_table
+  type: education
   contents:
-    - title: PhD
+    - studyType: PhD
       institution: University of Macau
-      year: 2024.08 - present
+      startDate: 2024.08
+      endDate: Present
       location: Macau, China
       area: Computer Science
     - title: Master
       institution: University of Electronic Science and Technology of China
       location: Sichuan, China
-      year: 2021.09 - 2024.06
+      startDate: 2021.09
+      endDate: 2024.06
       area: Information and Communication Engineering
     - title: Bachelor
       institution: Fuzhou University
       location: Fujian, China
-      year: 2017.09 - 2021.06
+      startDate: 2017.09 
+      endDate: 2021.06
       area: the Internet of Things (Major) and Artificial Intelligence (Minor)
 
 # - title: Experience
