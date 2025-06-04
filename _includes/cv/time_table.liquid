@@ -32,27 +32,17 @@
             <h6 class="title font-weight-bold ml-1 ml-md-4">{{ content.title }}</h6>
           {% endif %}
           {% if content.department or content.institution %}
-            <table class="table-cv ml-1 ml-md-4 institution">
-              <tbody>
-                {% if content.institution %}
-                  <tr>
-                    <td class="institution">{{ content.institution }}</td>
-                  </tr>
-                {% endif %}
-                {% if content.department %}
-                  <tr>
-                    <td class="department">{{ content.department }}</td>
-                  </tr>
-                {% endif %}
-                {% if content.area %}
-                  <tr>
-                    <td style="vertical-align: top; text-align: center" class="institution">
-                    </td>
-                    <td class="institution"><em>{{ content.area }}</em></td>
-                  </tr>
-                {% endif %}
-              </tbody>
-            </table>
+            <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
+              {% if content.institution %}
+                <div class="institution">{{ content.institution }}</div>
+              {% endif %}
+              {% if content.department %}
+                <div class="department">{{ content.department }}</div>
+              {% endif %}
+              {% if content.area %}
+                <div class="area"><em>{{ content.area }}</em></div>
+              {% endif %}
+            </div>
           {% endif %}
           {% if content.maindescription %}
             <div class="ml-1 ml-md-4">{{ content.maindescription }}</div>
