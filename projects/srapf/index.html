@@ -51,7 +51,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">Robust Few-Shot Vision-Language Model Adaptation</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -59,7 +59,7 @@
                 <span class="author-block">
                   <a href="https://tian1327.github.io/" target="_blank">Tian Liu</a><sup>2</sup>,</span>
                   <span class="author-block">
-                    <a href="https://aimerykong.github.io/" target="_blank">Shu Kong<sup>1,3,*</sup></a>
+                    <a href="https://aimerykong.github.io/" target="_blank">Shu Kong</a><sup>1,3,*</sup>
                   </span>
                   </div>
 
@@ -82,20 +82,9 @@
                       </a>
                     </span>
 
-                    <!-- Supplementary PDF link -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="https://github.com/hannawang09/SRAPF" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -129,16 +118,26 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
+        <h2 class="title is-3">Overview</h2>
         <div class="content has-text-justified">
           <p>
-            Pretrained Vision-Language Models (VLMs) achieve strong performance on downstream tasks when adapted with just a few labeled examples. However, the few-shot adapted models inevitably encounter out-of-distribution (OOD) test data that deviates from the in-distribution (ID) task-specific training data. Enhancing OOD generalization in few-shot adaptation is thus critically important, motivating our work on <em>robust few-shot VLM adaptation</em> for both ID and OOD accuracy. Through comprehensive comparisons of adaptation methods (e.g., prompt tuning, linear probing, contrastive finetuning, and full finetuning), we uncover three key findings:
-            <ol type="1">
+            Pretrained Vision-Language Models (VLMs) achieve strong performance on downstream tasks when adapted with just a few labeled examples. 
+            However, the few-shot adapted models inevitably encounter out-of-distribution (OOD) test data that deviates from the in-distribution (ID) task-specific training data. 
+            <!-- Through comprehensive comparisons of adaptation methods, we uncover three key findings: -->
+            <!-- <ol type="1">
                 <li>finetuning with proper hyperparameters significantly outperforms prompt tuning and linear probing, which are common <em>de facto</em> methods in VLM adaptation;</li>
                 <li>visual encoder-only finetuning achieves better efficiency and accuracy (both ID and OOD) than contrastively finetuning both visual and textual encoders;</li>
                 <li>finetuning the top layers of the visual encoder provides the best balance between ID and OOD accuracy.</li>
-            </ol>
-            Building on these findings, we propose partial finetuning of the  visual encoder empowered with two simple augmentation techniques: (1) retrieval augmentation which retrieves task-relevant data from the VLM's pretraining dataset to enhance adaptation, and (2) adversarial perturbation which promotes robustness during finetuning. We find that the former/latter boosts OOD/ID accuracy while slightly sacrificing the ID/OOD accuracy, and perhaps understandably, naively combining the two does not maintain their best OOD/ID accuracy. We address this dilemma with the developed <b>SRAPF</b>, <b>S</b>tage-wise <b>R</b>etrieval <b>A</b>ugmentation-based <b>A</b>dversarial <b>P</b>artial <b>F</b>inetuning. It consists of two finetuning stages: (1) partial finetuning of the visual encoder using both ID and retrieved data, followed by (2) adversarial partial finetuning using few-shot ID data. Extensive experiments on ImageNet-based OOD benchmarks demonstrate that SRAPF significantly outperforms existing VLM adaptation methods in both ID and OOD accuracy.
+            </ol> -->
+            <!-- Building on these findings,  -->
+          </p>
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/fig_benchmark.png" alt="ablation table" style="max-width: 100%; max-height: 100%;">
+          </div>
+          <p style="margin-top: 20px">
+            We propose <b>SRAPF</b>, <b>S</b>tage-wise <b>R</b>etrieval <b>A</b>ugmentation-based <b>A</b>dversarial <b>P</b>artial <b>F</b>inetuning, a robust few-shot VLM adaptation method.
+            It consists of two finetuning stages: (1) partial finetuning of the visual encoder using both ID and retrieved data, followed by (2) adversarial partial finetuning using few-shot ID data. 
+            Extensive experiments on ImageNet-based OOD benchmarks demonstrate that SRAPF significantly outperforms existing VLM adaptation methods in both ID and OOD accuracy.       
           </p>
         </div>
       </div>
@@ -154,165 +153,169 @@
 <section class="section hero is-light2">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Partial Finetuning (PFT) improves both ID and OOD performance</h2>
-        <div class="content has-text-justified">
-          <p>
-            We first explore the effect of tuning different blocks of the visual encoder using both CT and FT.
+      <div class="column is-five-fifths">
+        <div style="max-width: 100%; margin: 0 auto;">
+          <h2 class="title is-3">Partial Finetuning improves both ID and OOD performance</h2>
+        </div>
+        
+        <div class="content has-text-justified" style="max-width: 80%; margin: 0 auto;">
+          <p style="margin-top: 20px">
+            We first explore <b>the effect of tuning different blocks of the visual encoder</b> using both Contrastive Tuning (CT) and Finetuning (FT).
             Note that CT also finetunes the textual encoder:
             when finetuning the top-X blocks of the visual encoder, it also updates the top-X blocks of the textual encoder.
-            As shown in the table below, for both FT and CT, finetuning only the top few blocks yields better ID and OOD accuracy than finetuning the top linear layer (ref. linear probing) and all the blocks (i.e., full finetuning).
-            Moreover, when carefully selecting blocks to finetune, CT does not exhibit a clear advantage over FT.
+            As shown in the table below, for both FT and CT, <b>finetuning only the <span style="color: red;">top few blocks</span> yields better ID and OOD accuracy</b> than finetuning the top linear layer and all the blocks (i.e., full finetuning).
+            Moreover, when carefully selecting blocks to finetune, <b>CT does not exhibit a clear advantage over FT</b>.
           </p>
 
 
           <div class="item">
-          <img src="static/images/tab_pft.jpg" alt="MY ALT TEXT"/>
+          <img src="static/images/tab_pft.png" alt="PFT table"/>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <!-- End method: PFT -->
 
-<!-- <section class="section hero is-light">
+
+
+<!-- Method: RA and AP -->
+<section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-
+      <div class="column is-five-fifths">
+        <div style="max-width: 100%; margin: 0 auto;">
+          <h2 class="title is-3">Retrieval Augmentation and Adversarial Perturbation improve ID and OOD accuracy.</h2>
         </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-        </div>
-        <div class="item">
-          <!-- Your image here -->
-          <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-          <h2 class="subtitle has-text-centered">
-            Second image description.
-          </h2>
-        </div>
-        <div class="item">
-            <!-- Your image here -->
-            <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-            <h2 class="subtitle has-text-centered">
-            Third image description.
-          </h2>
-        </div>
-        <div class="item">
-          <!-- Your image here -->
-          <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-          <h2 class="subtitle has-text-centered">
-            Fourth image description.
-          </h2>
-        </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
+        <div class="content has-text-justified" style="max-width: 80%; margin: 0 auto;">
+          <br>
+          <div class="container" style="display: flex; align-items: center; gap: 20px;">
+            <div class="text" style="flex: 3;">
+              <h4 class="title is-5">Retrieval Augmentation</h4>
+              <p>
+                Retrieval Augmentation (RA) is an established technique that leverages publicly available data to enhance performances on downstream tasks.
+                It retrieves task-relevant examples and uses them to adapt pretrained models. 
+                <a href="https://tian1327.github.io/SWAT/" target="_blank" style="color: RGB(32, 156, 238); text-decoration: underline;">SWAT</a> reports that <b>the retrieved data has <span style="color: red;">domain gaps</span> compared to task-specific training data</b>, which might be a good thing in terms of enhancing the adapted model's OOD generalization capability. 
+              </p>
+              <p>
+                We adopt string matching-based RA approach to retrieve images from the VLM's pretraining dataset <a href="https://laion.ai/blog/laion-400-open-dataset/" target="_blank" style="color: RGB(32, 156, 238); text-decoration: underline;">LAION-400M</a>.
+                The results of incorporating RA with PFT show that <b>RA yields significant OOD accuracy gains</b>.
+              </p>
+            </div>
+            <div class="image" style="flex: 1;">
+              <img src="static/images/fig_ra.png" alt="RA figure" style="width: 100%; height: auto;">
+            </div>
+          </div>
           
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+          <br>
+          <br>
+
+
+
+          <div class="container" style="display: flex; align-items: center; gap: 20px;">
+            <div class="image" style="flex: 1;">
+              <img src="static/images/fig_ap.png" alt="RA figure" style="width: 100%; height: auto;">
+            </div>
+            <div class="text" style="flex: 3;">
+              <h4 class="title is-5">Adversarial Perturbation</h4>
+              <p>
+                Adversarial Perturbation (AP) perturbs input data by purposefully attacking the learned model.
+                One method of AP is to use projected gradient descent (PGD) to iteratively perturb an input example using the negative loss function.
+                Incorporating AP in learning is shown to improve the robustness of the learned model to adversarial attacks, but under-explored in OOD generalization research. 
+              </p>
+              <p>
+                We <b>apply it on <span style="color: red;">features</span> with PFT</b> for robust few-shot VLM adaptation, <b>yielding remarkable improvements for both ID and OOD accuracy</b>.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
+<!-- End method: RA and AP -->
 
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
+
+
+<!-- Method: SRAPF -->
+<section class="section hero is-light2">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <div style="max-width: 100%; margin: 0 auto;">
+          <h2 class="title is-3">SRAPF: Stage-wise Retrieval Augmentation-based Adversarial Partial Finetuning</h2>
         </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
+        
+
+        <div class="content has-text-justified" style="max-width: 80%; margin: 0 auto;">
+          <br>
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/tab_ablation.png" alt="ablation table" style="max-width: 100%; max-height: 100%;">
+          </div>
+
+          <br>
+          <h4 class="title is-5">Naive combination</h4>
+          <p>
+            Our experiments reveal that naively combining RA and AP does not necessarily improve both ID and OOD accuracy. 
+            We conjecture the reasons are
+            <ol type="1">
+              <li>too much noise in the retrieved examples to make them OOD related to the task-specific data.</li>
+              <li>the inherent imbalance in the retrieved data.</li>
+            </ol>
+            To address these issues, we propose a stage-wise adaptation pipeline <b>SRAPF</b>.
+          </p>
+
+          <br>
+          <h4 class="title is-5">Stage-wise finetuning</h4>
+            <p>Through empirical evaluation of stage-wise approaches, we develop <b>SRAPF</b> (highlighted in <span style="background-color: RGB(206, 239, 255); padding: 0 2px;">blue</span>) as the final solution, carefully considering computational costs:</p> 
+            <p>Stage 1: Partial Finetuning the visual encoder using both the task-specific data and the retrieved data.</p>
+            <p>Stage 2: Incorporating adversarial perturbation of partial finetuning using only the task-specific data.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End video carousel -->
+<!-- End method: SRAPF -->
 
 
 
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
+<!-- Method: SOTA -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <div style="max-width: 100%; margin: 0 auto;">
+          <h2 class="title is-3">SRAPF achieves state-of-the-art performance</h2>
+        </div>
         
+        <div class="content has-text-justified" style="max-width: 80%; margin: 0 auto;">
+          <br>
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/fig_SOTA.png" alt="SOTA figure" style="max-width: 60%; max-height: 100%;">
+          </div>
+          <p style="margin-top: 20px">
+            We compare representative VLM adaptation methods categorized into Prompt Tuning (PT), Finetuning (FT), Adapter Learning (AL) and Linear Probing (LP). 
+            Our method <b>SRAPF</b> significantly outperforms existing adaptation methods in both ID and OOD accuracy.
+          </p>
+        </div>
       </div>
     </div>
-  </section>
-<!--End paper poster -->
+  </div>
+</section>
+<!-- End method: SOTA -->
+
 
 
 <!--BibTex citation -->
-  <section class="section" id="BibTeX">
+<!-- <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>BibTex Code Here</code></pre>
     </div>
-</section>
+</section> -->
 <!--End BibTex citation -->
 
 
@@ -324,8 +327,6 @@
 
           <p>
             This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
 
         </div>
