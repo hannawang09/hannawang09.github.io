@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Robust Few-Shot Vision-Language Model Adaptation</title>
+  <title>Enabling Validation for Robust Few-Shot Recognition</title>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
 
@@ -42,6 +42,10 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async 
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -51,7 +55,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Robust Few-Shot Vision-Language Model Adaptation</h1>
+            <h1 class="title is-1 publication-title">Enabling Validation for Robust Few-Shot Recognition</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -77,7 +81,7 @@
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/2506.04713.pdf" target="_blank"
+                        <a href="" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -88,7 +92,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/hannawang09/SRAPF" target="_blank"
+                    <a href="" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -99,7 +103,7 @@
 
                 <!-- ArXiv abstract Link -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2506.04713" target="_blank"
+                  <a href="" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
@@ -125,8 +129,9 @@
         <h2 class="title is-3">Overview</h2>
         <div class="content has-text-justified">
           <p>
-            Pretrained Vision-Language Models (VLMs) achieve strong performance on downstream tasks when adapted with just a few labeled examples. 
-            However, the few-shot adapted models inevitably encounter out-of-distribution (OOD) test data that deviates from the in-distribution (ID) task-specific training data. 
+            Few-Shot Recognition (FSR) tackles classification tasks by training with minimal task-specific labeled data. 
+            Prevailing methods adapt or finetune a pretrained Vision-Language Model (VLM) and augment the scarce training data by retrieving task-relevant but noisy samples from open data sources. 
+            The finetuned VLM generalizes decently well to the task-specific in-distribution (ID) test data but struggles with out-of-distribution (OOD) test data.
             <!-- Through comprehensive comparisons of adaptation methods, we uncover three key findings: -->
             <!-- <ol type="1">
                 <li>finetuning with proper hyperparameters significantly outperforms prompt tuning and linear probing, which are common <em>de facto</em> methods in VLM adaptation;</li>
@@ -136,12 +141,14 @@
             <!-- Building on these findings,  -->
           </p>
           <div style="display: flex; justify-content: center; align-items: center;">
-            <img src="static/images/fig_benchmark.png" alt="ablation table" style="max-width: 100%; max-height: 100%;">
+            <img src="static/images/fig_benchmark.png" alt="benchmark figure" style="max-width: 100%; max-height: 100%;">
           </div>
           <p style="margin-top: 20px">
-            We propose <b>SRAPF</b>, <b>S</b>tage-wise <b>R</b>etrieval <b>A</b>ugmentation-based <b>A</b>dversarial <b>P</b>artial <b>F</b>inetuning, a robust few-shot VLM adaptation method.
-            It consists of two finetuning stages: (1) partial finetuning of the visual encoder using both ID and retrieved data, followed by (2) adversarial partial finetuning using few-shot ID data. 
-            Extensive experiments on ImageNet-based OOD benchmarks demonstrate that SRAPF significantly outperforms existing VLM adaptation methods in both ID and OOD accuracy.       
+            The core challenge of FSR is data scarcity, extending beyond limited training data to a complete lack of validation data.
+            We introduce a novel validation strategy that harmonizes <u><em>performance gain</em></u> and <u><em>degradatio</em>n</u> on the few-shot ID data and the retrieved data, respectively. 
+            Our validation enables parameter selection for partial finetuning and checkpoint selection, mitigating overfitting and improving test-data generalization. 
+            We unify this strategy with robust learning into a cohesive framework: <b>V</b>alidation-<b>E</b>nabled <b>S</b>tage-wise <b>T</b>uning (<b>VEST</b>).
+            Extensive experiments on the established ImageNet OOD benchmarks show that VEST significantly outperforms existing VLM adaptation methods, achieving state-of-the-art FSR performance on both ID and OOD data.       
           </p>
         </div>
       </div>
@@ -153,39 +160,125 @@
 
 
 
-<!-- Method: PFT -->
+<!-- Dilemma -->
 <section class="section hero is-light2">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-five-fifths">
         <div style="max-width: 100%; margin: 0 auto;">
-          <h2 class="title is-3">Partial Finetuning improves both ID and OOD performance</h2>
+          <h2 class="title is-3">The dilemma of directly adopting retrieved data for validation</h2>
         </div>
         
         <div class="content has-text-justified" style="max-width: 80%; margin: 0 auto;">
+          <p style="margin-top: 30px">
+            Due to data scarcity, FSR cannot provide a validation set and is especially prone to overfitting.
+            Inspired by the recent work <a href="https://tian1327.github.io/SWAT/" target="_blank" style="color: RGB(32, 156, 238); text-decoration: underline;">SWAT</a>, which retrieves task-relevant data from open data resources to augment few-shot training images, 
+            we exploit such data for validation.
+          </p>
+
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/fig_dilemma.png" alt="dilemma figure", style="width: 80%; height: auto;"/>
+          </div>
+
           <p style="margin-top: 20px">
-            We first explore <b>the effect of tuning different blocks of the visual encoder</b> using both Contrastive Tuning (CT) and Finetuning (FT).
-            Note that CT also finetunes the textual encoder:
-            when finetuning the top-X blocks of the visual encoder, it also updates the top-X blocks of the textual encoder.
-            As shown in the table below, for both FT and CT, <b>finetuning only the <span style="color: red;">top few blocks</span> yields better ID and OOD accuracy</b> than finetuning the top linear layer and all the blocks (i.e., full finetuning).
-            Moreover, when carefully selecting blocks to finetune, <b>CT does not exhibit a clear advantage over FT</b>.
+            A straightforward idea is to pack the retrieved data as the validation set. 
+            However, the retrieved data is OOD compared to the task-specific few-shot training data.
+            Consequently, the finetuned model on the ID data yields degraded performance on the retrieved data.
+            This causes the validation logic to <b><span style="color: RGB(194, 54, 187);">favor the pretrained model without any finetuning</span></b>, 
+            preventing effective finetuning to improve the generalization ability.
           </p>
 
 
-          <div class="item">
-          <img src="static/images/tab_pft.png" alt="PFT table"/>
-          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End method: PFT -->
+<!-- End Dilemma -->
+
+
+
+<!-- gF1 -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <div style="max-width: 100%; margin: 0 auto;">
+          <h2 class="title is-3">Our solution: gF1 score</h2>
+        </div>
+
+        <div class="content has-text-justified" style="max-width: 80%; margin: 0 auto;">
+          <p style="margin-top: 30px" >
+            We present a validation strategy based on <em>''performance gains''</em> on the ID training data and the retrieved data.
+            Specifically, for each checkpoint, say at epoch-\(i\), we calculate its training accuracy (\(\text{acc}^i_{ID}\)) and the accuracy on the retrieved data (\(\text{acc}^i_{RT}\)).
+            We place all the checkpoints on a 2D plane with \(x\) and \(y\) specifying the two accuracies.
+            Then, for the \(t^{th}\) checkpoint, 
+            we compute its <em>''performance gains''</em> on the ID training data as \(\Delta_{ID}^t= \text{acc}^t_{ID} - \min_i(\text{acc}^i_{ID})\),
+            and on the retrieved data as \(\Delta_{RT}^t=\text{acc}^t_{RT}-\min_i(\text{acc}^i_{RT})\).
+            We measure the generalization ability of this checkpoint using their harmonic mean (in spirit of F1 score), 
+            dubbed <b><span style="color: RGB(194, 54, 187);">gF1</span></b>:
+
+            \begin{equation}
+                \text{gF1}^t = 2 \times   \frac{\Delta_{ID}^t \times \Delta_{RT}^t}{\Delta_{ID}^t + \Delta_{RT}^t}.
+            \end{equation}
+          </p>
+
+
+          
+          <br>
+
+
+
+
+          <h4 class="title is-5">gF1 enables checkpoint selection</h4>
+          
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="static/images/fig_ckpt_selection.png" alt="ckpt selection figure", style="width: 65%; height: auto;"/>
+          </div>
+
+          <p style="margin-top: 20px">
+            Our validation strategy selects the checkpoint at epoch-3 after fully finetuning the VLM.
+            We verify this selection by comparing these checkpoints w.r.t accuracies on the OOD and ID test data.
+            <b>Results show that the selected checkpoint does generalize robustly well to the test data.</b>
+          </p>
+
+
+
+
+          <br>
+          <br>
+
+
+
+          
+          <h4 class="title is-5">gF1 enables layer selection</h4>
+          
+          <div class="item">
+            <img src="static/images/fig_layer_selection.png" alt="layer selection figure"/>
+          </div>
+
+          <p style="margin-top: 20px">
+            We extend our validation strategy to decide how many top layers to partially finetune (PFT) in a Transformer.
+            In practice, it selects the top-4 layers.
+            The resulting checkpoint accuracies for different \(k\) on the ID and OOD test sets demonstrat that 
+            <b>our validation strategy effectively determines the top-\(k\) layers to PFT for better robustness and generalization.</b>
+          </p>
+
+
+        </div>
+        
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End gF1 -->
+
 
 
 
 <!-- Method: RA and AP -->
-<section class="section hero is-light">
+<section class="section hero is-light2">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-five-fifths">
@@ -194,21 +287,22 @@
         </div>
         <div class="content has-text-justified" style="max-width: 80%; margin: 0 auto;">
           <br>
+          <br>
           <div class="container" style="display: flex; align-items: center; gap: 20px;">
             <div class="text" style="flex: 3;">
               <h4 class="title is-5">Retrieval Augmentation</h4>
               <p>
-                Retrieval Augmentation (RA) is an established technique that leverages publicly available data to enhance performances on downstream tasks.
+                Retrieval Augmentation (RA) leverages publicly available data to enhance performances on downstream tasks.
                 It retrieves task-relevant examples and uses them to adapt pretrained models. 
-                <a href="https://tian1327.github.io/SWAT/" target="_blank" style="color: RGB(32, 156, 238); text-decoration: underline;">SWAT</a> reports that <b>the retrieved data has <span style="color: red;">domain gaps</span> compared to task-specific training data</b>, which might be a good thing in terms of enhancing the adapted model's OOD generalization capability. 
               </p>
               <p>
-                We adopt string matching-based RA approach to retrieve images from the VLM's pretraining dataset <a href="https://laion.ai/blog/laion-400-open-dataset/" target="_blank" style="color: RGB(32, 156, 238); text-decoration: underline;">LAION-400M</a>.
+                We adopt string matching-based RA approach to retrieve images from the VLM's pretraining dataset <a href="https://laion.ai/blog/laion-400-open-dataset/" target="_blank" style="color: RGB(32, 156, 238); text-decoration: underline;">LAION-400M</a>,
+                and <b>employ such data to PFT a VLM</b>.
                 The results of incorporating RA with PFT show that <b>RA yields significant OOD accuracy gains</b>.
               </p>
             </div>
             <div class="image" style="flex: 1;">
-              <img src="static/images/fig_ra.png" alt="RA figure" style="width: 100%; height: auto;">
+              <img src="static/images/fig_RA.png" alt="RA figure" style="width: 100%; height: auto;">
             </div>
           </div>
           
@@ -220,17 +314,17 @@
 
           <div class="container" style="display: flex; align-items: center; gap: 20px;">
             <div class="image" style="flex: 1;">
-              <img src="static/images/fig_ap.png" alt="RA figure" style="width: 100%; height: auto;">
+              <img src="static/images/fig_AP.png" alt="AP figure" style="width: 80%; height: auto;">
             </div>
             <div class="text" style="flex: 3;">
               <h4 class="title is-5">Adversarial Perturbation</h4>
               <p>
                 Adversarial Perturbation (AP) perturbs input data by purposefully attacking the learned model.
                 One method of AP is to use projected gradient descent (PGD) to iteratively perturb an input example using the negative loss function.
-                Incorporating AP in learning is shown to improve the robustness of the learned model to adversarial attacks, but under-explored in OOD generalization research. 
+                <!-- Incorporating AP in learning is shown to improve the robustness of the learned model to adversarial attacks, but under-explored in OOD generalization research.  -->
               </p>
               <p>
-                We <b>apply it on <span style="color: red;">features</span> with PFT</b> for robust few-shot VLM adaptation, <b>yielding remarkable improvements for both ID and OOD accuracy</b>.
+                While AP typically applies to input image, we <b>apply it to the <span style="color: RGB(194, 54, 187);">features</span> with PFT</b> for better efficiency, <b>yielding remarkable improvements for both ID and OOD accuracy</b>.
               </p>
             </div>
           </div>
@@ -244,72 +338,82 @@
 
 
 
-<!-- Method: SRAPF -->
-<section class="section hero is-light2">
+
+<!-- Method: VEST -->
+<section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-five-fifths">
         <div style="max-width: 100%; margin: 0 auto;">
-          <h2 class="title is-3">SRAPF: Stage-wise Retrieval Augmentation-based Adversarial Partial Finetuning</h2>
+          <h2 class="title is-3">VEST: Validation-Enabled Stage-wise Tuning</h2>
         </div>
         
 
         <div class="content has-text-justified" style="max-width: 80%; margin: 0 auto;">
+          <br>
           <br>
           <div style="display: flex; justify-content: center; align-items: center;">
             <img src="static/images/tab_ablation.png" alt="ablation table" style="max-width: 100%; max-height: 100%;">
           </div>
 
           <br>
-          <h4 class="title is-5">Naive combination</h4>
+          <h4 class="title is-5">One-stage training</h4>
           <p>
-            Our experiments reveal that naively combining RA and AP does not necessarily improve both ID and OOD accuracy. 
-            We conjecture the reasons are
+            Our experiments reveal that naively combining RA and AP does not yield remarkable improvements on ID and OOD accuracy. 
+            We conjecture the reason is that the retrieved examples have
             <ol type="1">
-              <li>too much noise in the retrieved examples to make them OOD related to the task-specific data.</li>
-              <li>the inherent imbalance in the retrieved data.</li>
+              <li>label noises.</li>
+              <li>distributional shifts compared with task-specific training images.</li>
+              <li>imbalanced class distributions.</li>
             </ol>
-            To address these issues, we propose a stage-wise adaptation pipeline <b>SRAPF</b>.
+            To address these issues, we propose a stage-wise finetuning pipeline.
           </p>
 
           <br>
-          <h4 class="title is-5">Stage-wise finetuning</h4>
-            <p>Through empirical evaluation of stage-wise approaches, we develop <b>SRAPF</b> (highlighted in <span style="background-color: RGB(206, 239, 255); padding: 0 2px;">blue</span>) as the final solution, carefully considering computational costs:</p> 
-            <p>Stage 1: Partial Finetuning the visual encoder using both the task-specific data and the retrieved data.</p>
-            <p>Stage 2: Incorporating adversarial perturbation of partial finetuning using only the task-specific data.</p>
+          <h4 class="title is-5">Stage-wise training</h4>
+            <p>
+              Through empirical evaluation of stage-wise approaches, we develop <b>VEST</b> (highlighted in <span style="background-color: RGB(206, 239, 255); padding: 0 2px;">blue</span>) 
+              that incorporates RA and AP to PFT the visual encoder with our validation strategy in three stages:
+            </p>
+            <ul>
+              <li>Stage 0: Layer selection for PFT with validation.</li>
+              <li>Stage 1: PFT with both ID few-shot training data and the retrieved data.</li>
+              <li>Stage 2: PFT with AP on the ID few-shot training data.</li>
+            </ul>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End method: SRAPF -->
+<!-- End method: VEST -->
 
 
 
-<!-- Method: SOTA -->
-<section class="section hero is-light">
+<!-- SOTA -->
+<section class="section hero is-light2">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-five-fifths">
         <div style="max-width: 100%; margin: 0 auto;">
-          <h2 class="title is-3">SRAPF achieves state-of-the-art performance</h2>
+          <h2 class="title is-3">VEST achieves state-of-the-art performance</h2>
         </div>
         
         <div class="content has-text-justified" style="max-width: 80%; margin: 0 auto;">
+          <br>
           <br>
           <div style="display: flex; justify-content: center; align-items: center;">
             <img src="static/images/fig_SOTA.png" alt="SOTA figure" style="max-width: 60%; max-height: 100%;">
           </div>
           <p style="margin-top: 20px">
             We compare representative VLM adaptation methods categorized into Prompt Tuning (PT), Finetuning (FT), Adapter Learning (AL) and Linear Probing (LP). 
-            Our method <b>SRAPF</b> significantly outperforms existing adaptation methods in both ID and OOD accuracy.
+            Our method <b>VEST</b> significantly outperforms existing adaptation methods in both ID and OOD accuracy with a moderate number of learned parameters.
           </p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End method: SOTA -->
+<!-- End SOTA -->
 
 
 
@@ -318,8 +422,8 @@
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>
-      @article{wang2025robust,
-      title={Robust Few-Shot Vision-Language Model Adaptation}, 
+      @article{wang2025enabling,
+      title={Enabling Validation for Robust Few-Shot Recognition}, 
       author={Wang, Hanxin and Liu, Tian and Kong, Shu},
       journal={arXiv preprint arXiv:2506.04713},
       year={2025}
@@ -329,7 +433,7 @@
 <!--End BibTex citation -->
 
 
-  <footer class="footer">
+<footer class="footer">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
