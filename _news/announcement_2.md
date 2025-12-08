@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper "[Robust Few-Shot Vision-Language Model Adaptation](https://arxiv.org/abs/2506.04713)" is available at arxiv now!
+Our paper "[Enabling Validation for Robust Few-Shot Recognition](https://arxiv.org/abs/2506.04713)" is available at arxiv now!
