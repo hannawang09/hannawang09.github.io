@@ -33,14 +33,14 @@ ninja.data = [{
         },{id: "news-having-my-personal-website-sparkles-smile",
           title: 'Having my personal website! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "news-our-paper-robust-few-shot-vision-language-model-adaptation-is-available-at-arxiv-now",
-          title: 'Our paper “Robust Few-Shot Vision-Language Model Adaptation” is available at arxiv now!',
+          section: "News",},{id: "news-our-paper-enabling-validation-for-robust-few-shot-recognition-is-available-at-arxiv-now",
+          title: 'Our paper “Enabling Validation for Robust Few-Shot Recognition” is available at arxiv now!...',
           description: "",
-          section: "News",},{id: "projects-srapf",
-          title: 'SRAPF',
-          description: "Robust Few-Shot Vision-Language Model Adaptation",
+          section: "News",},{id: "projects-vest",
+          title: 'VEST',
+          description: "Enabling Validation for Robust Few-Shot Recognition",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/srapf.html";
+              window.location.href = "/projects/vest.html";
             },},{
       id: 'light-theme',
       title: 'Change theme to light',

@@ -59,11 +59,11 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="https://hannawang09.github.io/" target="_blank">Hanxin Wang</a><sup>1,†</sup>,</span>
+                <a href="https://hannawang09.github.io/" target="_blank">Hanxin Wang</a><sup>1,*</sup>,</span>
                 <span class="author-block">
-                  <a href="https://tian1327.github.io/" target="_blank">Tian Liu</a><sup>2,†</sup>,</span>
+                  <a href="https://tian1327.github.io/" target="_blank">Tian Liu</a><sup>2,*</sup>,</span>
                   <span class="author-block">
-                    <a href="https://aimerykong.github.io/" target="_blank">Shu Kong</a><sup>1,3,*</sup>
+                    <a href="https://aimerykong.github.io/" target="_blank">Shu Kong</a><sup>1,3</sup>
                   </span>
                   </div>
 
@@ -74,14 +74,14 @@
                   </div>
 
                   <div class="is-size-6 publication-authors">
-                    <sup>†</sup>Equal contribution, <sup>*</sup>Corresponding author
+                    <sup>*</sup>Equal contribution
                   </div>
 
                   <div class="column has-text-centered">
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="" target="_blank"
+                        <a href="https://arxiv.org/pdf/2506.04713" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -92,7 +92,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="" target="_blank"
+                    <a href="https://github.com/hannawang09/VEST" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -103,7 +103,7 @@
 
                 <!-- ArXiv abstract Link -->
                 <span class="link-block">
-                  <a href="" target="_blank"
+                  <a href="http://arxiv.org/abs/2506.04713" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
@@ -145,7 +145,7 @@
           </div>
           <p style="margin-top: 20px">
             The core challenge of FSR is data scarcity, extending beyond limited training data to a complete lack of validation data.
-            We introduce a novel validation strategy that harmonizes <u><em>performance gain</em></u> and <u><em>degradatio</em>n</u> on the few-shot ID data and the retrieved data, respectively. 
+            We introduce a novel validation strategy that harmonizes <u><em>performance gain</em></u> and <u><em>degradation</em></u> on the few-shot ID data and the retrieved data, respectively. 
             Our validation enables parameter selection for partial finetuning and checkpoint selection, mitigating overfitting and improving test-data generalization. 
             We unify this strategy with robust learning into a cohesive framework: <b>V</b>alidation-<b>E</b>nabled <b>S</b>tage-wise <b>T</b>uning (<b>VEST</b>).
             Extensive experiments on the established ImageNet OOD benchmarks show that VEST significantly outperforms existing VLM adaptation methods, achieving state-of-the-art FSR performance on both ID and OOD data.       
