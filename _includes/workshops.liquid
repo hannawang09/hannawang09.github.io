@@ -1,10 +1,10 @@
 <div class="workshops">
   {% if site.workshops != blank %}
     {% assign workshops = site.workshops | reverse %}
-    <ul class="list-unstyled mb-0">
+    <ul class="ps-3 mb-0">
       {% for item in workshops %}
         <li class="mb-2">
-          <span class="fw-bold">{{ item.title }}</span>: 
+          <strong>{{ item.title }}</strong>:
           
           {% if item.redirect %}
             <a class="text-decoration-none" href="{{ item.redirect }}" target="_blank">
