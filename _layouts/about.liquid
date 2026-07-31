@@ -50,10 +50,10 @@ layout: default
 
     <!-- Workshops-->
     {% if page.workshops %}
-      <h2>
+      <h2 class="mt-5">
         <a href="{{ '/workshops/' | relative_url }}" style="color: inherit">workshops</a>
       </h2>
-      {% include workshop.liquid limit=false %}
+      {% include workshops.liquid limit=false %}
     {% endif %}
 
     <!-- Latest posts -->
