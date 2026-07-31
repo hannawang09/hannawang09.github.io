@@ -14,6 +14,7 @@ profile:
 
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
+workshops: true # include a list of workshops
 
 announcements:
   enabled: true # includes a list of news items

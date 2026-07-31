@@ -48,6 +48,14 @@ layout: default
       {% include news.liquid limit=true %}
     {% endif %}
 
+    <!-- Workshops-->
+    {% if page.workshops %}
+      <h2>
+        <a href="{{ '/workshops/' | relative_url }}" style="color: inherit">workshops</a>
+      </h2>
+      {% include workshop.liquid limit=false %}
+    {% endif %}
+
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
       <h2>

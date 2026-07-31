@@ -1,0 +1,18 @@
+<div class="workshops">
+  {% if site.workshops != blank %}
+    {% assign workshops = site.workshops | reverse %}
+    <ul class="list-unstyled mb-0">
+      {% for item in workshops %}
+        <li class="mb-2">
+          {% if item.redirect %}
+            <a class="fw-bold text-decoration-none" href="{{ item.redirect }}" target="_blank">{{ item.title }}</a>
+          {% else %}
+            <a class="fw-bold text-decoration-none" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {% endif %}: {{ item.edition | default: "1st" }} at {{ item.venue }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="text-muted">No workshops hosted so far...</p>
+  {% endif %}
+</div>
