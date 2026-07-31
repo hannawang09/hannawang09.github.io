@@ -44,6 +44,11 @@ ninja.data = [{
           description: "Enabling Validation for Robust Few-Shot Recognition",
           section: "Projects",handler: () => {
               window.location.href = "/projects/vest.html";
+            },},{id: "workshops-the-personalized-visual-intelligence-workshop",
+          title: 'The Personalized Visual Intelligence Workshop',
+          description: "",
+          section: "Workshops",handler: () => {
+              window.location.href = "/workshops/accv2026-pvi.html";
             },},{
       id: 'light-theme',
       title: 'Change theme to light',
