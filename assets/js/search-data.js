@@ -49,6 +49,11 @@ ninja.data = [{
           description: "",
           section: "Workshops",handler: () => {
               window.location.href = "/workshops/accv2026-pvi.html";
+            },},{id: "workshops-the-autoexpert-workshop",
+          title: 'The AutoExpert Workshop',
+          description: "",
+          section: "Workshops",handler: () => {
+              window.location.href = "/workshops/cvpr2026-autoexpert.html";
             },},{
       id: 'light-theme',
       title: 'Change theme to light',
