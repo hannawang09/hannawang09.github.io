@@ -44,13 +44,13 @@ ninja.data = [{
           description: "Enabling Validation for Robust Few-Shot Recognition",
           section: "Projects",handler: () => {
               window.location.href = "/projects/vest.html";
-            },},{id: "workshops-the-personalized-visual-intelligence-workshop",
-          title: 'The Personalized Visual Intelligence Workshop',
+            },},{id: "workshops-personalized-visual-intelligence-workshop",
+          title: 'Personalized Visual Intelligence Workshop',
           description: "",
           section: "Workshops",handler: () => {
               window.location.href = "/workshops/accv2026-pvi.html";
-            },},{id: "workshops-the-autoexpert-workshop",
-          title: 'The AutoExpert Workshop',
+            },},{id: "workshops-autoexpert-workshop",
+          title: 'AutoExpert Workshop',
           description: "",
           section: "Workshops",handler: () => {
               window.location.href = "/workshops/cvpr2026-autoexpert.html";
