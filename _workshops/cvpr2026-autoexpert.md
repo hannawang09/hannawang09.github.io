@@ -1,7 +1,8 @@
 ---
 layout: page
-title: "The AutoExpert Workshop"
-edition: "1st"
-venue: "CVPR'26"
-redirect: "https://autoexpert-arena.github.io/"
+title: "AutoExpert Workshop"
+editions:
+  - edition: "1st"
+    venue: "CVPR'26"
+    url: "https://autoexpert-arena.github.io/"
 ---

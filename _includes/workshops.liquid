@@ -1,23 +1,34 @@
 <div class="workshops">
   {% if site.workshops != blank %}
-    {% assign workshops = site.workshops | reverse %}
-    <ul class="ps-3 mb-0">
-      {% for item in workshops %}
-        <li class="mb-2">
-          <strong>{{ item.title }}</strong>:
-          
-          {% if item.redirect %}
-            <a class="text-decoration-none" href="{{ item.redirect }}" target="_blank">
-              {{ item.edition | default: "1st" }} at {{ item.venue }}
-            </a>
-          {% else %}
-            <a class="text-decoration-none" href="{{ item.url | relative_url }}">
-              {{ item.edition | default: "1st" }} at {{ item.venue }}
-            </a>
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
+    <div class="table-responsive">
+      <table class="table table-sm table-borderless align-top mb-0">
+        {% assign workshops = site.workshops | reverse %}
+        {% for item in workshops %}
+          <tr>
+            <td style="width: 45%" class="pe-3">
+              <strong>{{ item.title }}</strong>
+            </td>
+            
+            <td>
+              {% if item.editions %}
+                {% for ed in item.editions %}
+                  <a class="text-decoration-none text-nowrap" href="{{ ed.url }}" target="_blank">
+                    {{ ed.edition }} @ {{ ed.venue }}
+                  </a>
+                  {% unless forloop.last %}
+                    <span class="text-muted mx-2" style="opacity: 0.4;">|</span>
+                  {% endunless %}
+                {% endfor %}
+              {% else %}
+                <a class="text-decoration-none text-nowrap" href="{{ item.redirect | default: item.url }}" target="_blank">
+                  {{ item.edition | default: "1st" }} @ {{ item.venue }}
+                </a>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
   {% else %}
     <p class="text-muted">No workshops hosted so far...</p>
   {% endif %}
